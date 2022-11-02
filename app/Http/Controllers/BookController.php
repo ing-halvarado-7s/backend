@@ -69,8 +69,10 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $book)
     {
-        return "delete";
+        $book->delete();
+        return response()->noContent();
+       
     }
 }
