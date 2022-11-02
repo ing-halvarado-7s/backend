@@ -52,9 +52,15 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book)
     {
-        return "patch";
+        $request->validate([
+            'title'=>['required']
+        ]);
+        
+        $book->title = $request->input('title');
+        $book->save();
+        return $book;
     }
 
     /**
